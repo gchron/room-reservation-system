@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Apartments</title>
+</head>
+<body>
+Szczegóły pokoju <span th:text="${apartmentNumber}"/>
+
+<table>
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Nr Pokoju</th>
+        <th>Powierzchnia</th>
+        <th>Opis</th>
+        <th>Max ilość osób</th>
+        <th>Ilość łóżek </th>
+        <th>Cena w sezonie </th>
+        <th>Cena poza sezonem </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="ap : ${apartment}">
+        <td><span th:text="${ap.id}"/></td>
+        <td><span th:text="${ap.number}"/></td>
+        <td><span th:text="${ap.area}"/></td>
+        <td><span th:text="${ap.description}"/></td>
+        <td><span th:text="${ap.numberOfPeople}"/></td>
+        <td><span th:text="${ap.numberOfBeds}"/></td>
+        <td><span th:text="${ap.priceAtSeason}"/></td>
+        <td><span th:text="${ap.priceAfterSeason}"/></td>
+        <td><a th:href="@{../edit?id=} + ${ap.id}">Edytuj</a></td>
+        <td><a th:href="@{../delete?id=} + ${ap.id}">Usuń</a></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

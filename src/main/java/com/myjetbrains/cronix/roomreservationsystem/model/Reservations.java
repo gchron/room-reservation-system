@@ -30,7 +30,7 @@ public class Reservations {
 
     @ManyToOne
     @JoinColumn(name = "room_id")
-    private Room room;
+    private Apartment apartment;
 
     @ManyToOne
     @JoinColumn(name = "user_id")

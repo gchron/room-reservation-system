@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Create Apartment</title>
+</head>
+<body>
+<form th:action="@{/apartment/edit}" method="POST" th:object="${apartment}">
+    <table>
+        <tr>
+            <td>Nr Pokoju:</td>
+            <td><input type="text" id="number" name="number" th:value="${apartment.number}"/>
+            </td>
+        </tr>
+        <tr>
+            <td>Metraż:</td>
+            <td><input type="text" id="area" name="area" th:value="${apartment.area}"/>
+            </td>
+        </tr>
+        <tr>
+            <td>Ilość łóżek:</td>
+            <td>
+                <input type="text" id="numberOfBeds" name="numberOfBeds" th:value="${apartment.numberOfBeds}"/>
+            </td>
+        </tr>
+        <tr>
+            <td>Max ilość osób</td>
+            <td><input type="text" id="numberOfPeople" name="numberOfPeople" th:value="${apartment.numberOfPeople}"/>
+            </td>
+        </tr>
+        <tr>
+            <td>Opis</td>
+            <td><input type="text" id="description" name="description" th:value="${apartment.description}"/>
+            </td>
+        </tr>
+        <tr>
+            <td>Cena w sezonie</td>
+            <td><input type="text" id="priceAtSeason" name="priceAtSeason" th:value="${apartment.priceAtSeason}"/>
+            </td>
+        </tr>
+        <tr>
+            <td>Cena poza sezonem</td>
+            <td><input type="text" id="priceAfterSeason" name="priceAfterSeason"
+                       th:value="${apartment.priceAfterSeason}"/>
+            </td>
+        </tr>
+        <input type="hidden" id="id" name="id" th:value="${apartment.id}"/>
+        <tr>
+            <td>
+                <button type="submit">Zatwierdź</button>
+            </td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

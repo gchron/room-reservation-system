@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title></title>
+</head>
+<body>
+
+<table>
+    <thead>
+    <tr>
+        <th>number</th>
+        <th>area</th>
+        <th>priceAtSeason</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="apartment : ${apartments}">
+        <td><span th:text="${apartment.number}"/></td>
+        <td><span th:text="${apartment.area}"/></td>
+        <td><span th:text="${apartment.priceAtSeason}"/></td>
+        <td><a th:href="@{../apartment/details/} + ${apartment.id}">Details</a></td>
+    </tr>
+    </tbody>
+</table>
+
+
+</body>
+</html>

@@ -1,5 +1,6 @@
 package com.myjetbrains.cronix.roomreservationsystem.model;
 
+import com.myjetbrains.cronix.roomreservationsystem.dto.ApartmentDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -21,7 +22,7 @@ import java.util.Set;
 @Builder
 @Setter
 @Getter
-public class Room {
+public class Apartment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -41,7 +42,19 @@ public class Room {
     @Column(name = "price_after_season")
     private BigDecimal priceAfterSeason;
 
-    @OneToMany(mappedBy = "room")
+    @OneToMany(mappedBy = "apartment")
     Set<Reservations> reservations;
 
+    public ApartmentDto toDto() {
+        return ApartmentDto.builder()
+                .id(id)
+                .number(number)
+                .area(area)
+                .numberOfBeds(numberOfBeds)
+                .numberOfPeople(numberOfPeople)
+                .description(description)
+                .priceAtSeason(priceAtSeason)
+                .priceAfterSeason(priceAfterSeason)
+                .build();
+    }
 }
