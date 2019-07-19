@@ -10,6 +10,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import java.time.LocalDate;
 
@@ -26,14 +27,13 @@ public class Reservations {
     private Long id;
     private LocalDate dateFrom;
     private LocalDate dateTo;
-    // Room and User or Long room_id, Long user_id
 
     @ManyToOne
-//    @JoinColumn(name = "room_id")
+    @JoinColumn(name = "room_id")
     private Room room;
 
     @ManyToOne
-//    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "user_id")
     private User user;
 
 }

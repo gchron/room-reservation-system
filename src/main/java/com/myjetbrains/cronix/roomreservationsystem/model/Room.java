@@ -41,7 +41,7 @@ public class Room {
     @Column(name = "price_after_season")
     private BigDecimal priceAfterSeason;
 
-    @OneToMany//(mappedBy = "room")
+    @OneToMany(mappedBy = "room")
     Set<Reservations> reservations;
 
 }

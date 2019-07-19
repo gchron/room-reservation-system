@@ -26,7 +26,7 @@ public class Address {
     private Long id;
 
     @ManyToOne
-//    @JoinColumn(name = "address")
+//    @JoinColumn(name = "user_id")
     private User user;
 
     private String street;

@@ -11,6 +11,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import java.util.Set;
 
@@ -34,9 +35,9 @@ public class User {
     private String emailAdress;
 
     @OneToMany
-//    @JoinColumn(name = "user")
+    @JoinColumn(name = "user")
     private Set<Address> address;
 
-    @OneToMany//(mappedBy = "user")
+    @OneToMany(mappedBy = "user")
     private Set<Reservations> reservations;
 }
