@@ -21,7 +21,7 @@ public class ApartmentController {
     private final ApartmentFinder apartmentFinder;
     private final ApartmentService apartmentService;
 
-    @GetMapping("/get/{apartmentId}")
+    @GetMapping("/get/{apartmentNumber}")
     ModelAndView getApartment(@PathVariable Integer apartmentNumber) {
         ModelAndView modelAndView = new ModelAndView("apartment/details.html");
         modelAndView.addObject("apartmentNumber", apartmentNumber);
@@ -57,7 +57,7 @@ public class ApartmentController {
     @GetMapping("/delete")
     String deleteCar(@RequestParam Long id){
         apartmentService.delete(id);
-        return "redirect:/";
+        return "redirect:/apartment/";
     }
 
     @GetMapping("/edit")

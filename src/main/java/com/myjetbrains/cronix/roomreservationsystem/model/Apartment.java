@@ -35,7 +35,7 @@ public class Apartment {
     private Integer numberOfBeds;
     @Column(name = "max_number_of_people")
     private Integer numberOfPeople;
-    @Column(name = "description")
+    @Column(name = "description", columnDefinition="LONGTEXT")
     private String description;
     @Column(name = "price_at_season")
     private BigDecimal priceAtSeason;
