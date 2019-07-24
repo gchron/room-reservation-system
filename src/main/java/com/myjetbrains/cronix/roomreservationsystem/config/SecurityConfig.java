@@ -46,7 +46,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and().authorizeRequests().antMatchers("/apartment/create").hasRole("USER")
                 .and()
                 .formLogin()
-                .usernameParameter("login")
+//                .usernameParameter("login")
                 .loginPage("/users/login")
                 .loginProcessingUrl("/authenticate")
                 .defaultSuccessUrl("/")

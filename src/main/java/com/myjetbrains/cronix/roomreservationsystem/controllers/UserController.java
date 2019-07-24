@@ -1,6 +1,7 @@
 package com.myjetbrains.cronix.roomreservationsystem.controllers;
 
 import com.myjetbrains.cronix.roomreservationsystem.dto.AddressDto;
+import com.myjetbrains.cronix.roomreservationsystem.dto.ChangeUserPasswordDto;
 import com.myjetbrains.cronix.roomreservationsystem.dto.NewUserDto;
 import com.myjetbrains.cronix.roomreservationsystem.dto.UpdateUserDto;
 import com.myjetbrains.cronix.roomreservationsystem.dto.UserAddressAssigment;
@@ -85,9 +86,8 @@ public class UserController {
     }
 
     @PostMapping("/changePassword")
-    String changePassword(@ModelAttribute UpdateUserDto updateUserDto) {
-        userService.changePassword(updateUserDto);
+    String changePassword(@ModelAttribute ChangeUserPasswordDto changeUserPasswordDto) {
+        userService.changePassword(changeUserPasswordDto);
         return "redirect:/user/profile";
     }
-
 }
