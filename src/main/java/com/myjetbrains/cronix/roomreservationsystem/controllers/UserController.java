@@ -75,4 +75,19 @@ public class UserController {
         }
         return "redirect:/user/profile";
     }
+
+    @GetMapping("/changePassword")
+    ModelAndView changePassword(Principal principal) {
+        ModelAndView modelAndView = new ModelAndView("user/changePassword");
+        Long userId = userFinder.findByLogin(principal.getName()).getId();
+        modelAndView.addObject("user", userFinder.findById(userId));
+        return modelAndView;
+    }
+
+    @PostMapping("/changePassword")
+    String changePassword(@ModelAttribute UpdateUserDto updateUserDto) {
+        userService.changePassword(updateUserDto);
+        return "redirect:/user/profile";
+    }
+
 }

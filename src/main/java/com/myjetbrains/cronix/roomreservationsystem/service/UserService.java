@@ -1,6 +1,7 @@
 package com.myjetbrains.cronix.roomreservationsystem.service;
 
 import com.myjetbrains.cronix.roomreservationsystem.dto.NewUserDto;
+import com.myjetbrains.cronix.roomreservationsystem.dto.UpdateUserDto;
 import com.myjetbrains.cronix.roomreservationsystem.dto.UserAddressAssigment;
 import com.myjetbrains.cronix.roomreservationsystem.model.User;
 import com.myjetbrains.cronix.roomreservationsystem.repository.UserRepository;
@@ -27,12 +28,19 @@ public class UserService {
     }
 
     @Transactional
-    public void update(UserAddressAssigment userAddressAssigment){
+    public void update(UserAddressAssigment userAddressAssigment) {
         User user = userRepository.findById(userAddressAssigment.getUserId())
                 .orElseThrow(IllegalArgumentException::new);
         user.setName(userAddressAssigment.getName());
         user.setSurname(userAddressAssigment.getSurname());
         user.setPhoneNumber(userAddressAssigment.getPhoneNumber());
         user.setEmailAdress(userAddressAssigment.getEmailAdress());
+    }
+
+    @Transactional
+    public void changePassword(UpdateUserDto updateUserDto) {
+        User user = userRepository.findById(updateUserDto.getId())
+                .orElseThrow(IllegalArgumentException::new);
+        user.setPassword(passwordEncoder.encode(updateUserDto.getPassword()));
     }
 }

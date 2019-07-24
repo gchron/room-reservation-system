@@ -6,7 +6,6 @@
 </head>
 <body>
 <form th:action="@{/user/edit}">
-
     <table>
         <input type="hidden" id="id" name="id" th:value="${user.id}"/>
         <tr>
@@ -54,12 +53,8 @@
                 <button type="submit">Edit</button>
             </td>
         </tr>
-        <tr>
-            <td>
-                <button th:href="@{/user/changePassword}">Change Password</button>
-            </td>
-        </tr>
     </table>
 </form>
+<a th:href="@{/user/changePassword}"><button>Change Password</button></a>
 </body>
 </html>
