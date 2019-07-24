@@ -1,5 +1,6 @@
 package com.myjetbrains.cronix.roomreservationsystem.model;
 
+import com.myjetbrains.cronix.roomreservationsystem.dto.AddressDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -36,4 +37,15 @@ public class Address {
     @Column(name = "postal_code")
     private String postalCode;
     private String city;
+
+    public AddressDto toDto() {
+        return AddressDto.builder()
+                .id(id)
+                .street(street)
+                .houseNumber(houseNumber)
+                .apartmentNumber(apartmentNumber)
+                .postalCode(postalCode)
+                .city(city)
+                .build();
+    }
 }

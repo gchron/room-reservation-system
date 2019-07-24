@@ -21,54 +21,57 @@ public class ApartmentController {
     private final ApartmentFinder apartmentFinder;
     private final ApartmentService apartmentService;
 
-    @GetMapping("/get/{apartmentNumber}")
+    @GetMapping("/{apartmentNumber}")
     ModelAndView getApartment(@PathVariable Integer apartmentNumber) {
         ModelAndView modelAndView = new ModelAndView("apartment/details.html");
         modelAndView.addObject("apartmentNumber", apartmentNumber);
         modelAndView.addObject("apartment", apartmentFinder.findByApartmentNumber(apartmentNumber));
         return modelAndView;
     }
+
     @GetMapping("/create")
-    ModelAndView createRoom() {
+    ModelAndView createApartment() {
         ModelAndView modelAndView = new ModelAndView("apartment/create.html");
         modelAndView.addObject("apartment", new ApartmentDto());
         return modelAndView;
     }
 
     @PostMapping("/create")
-    String createCar(@ModelAttribute ApartmentDto apartmentDto) {
+    String createApartment(@ModelAttribute ApartmentDto apartmentDto) {
         apartmentService.createOrUpdate(apartmentDto);
         return "redirect:/apartment/create";
     }
 
     @RequestMapping({"", "/"})
-    ModelAndView findAllRooms() {
+    ModelAndView findAllApartments() {
         ModelAndView modelAndView = new ModelAndView("apartment/index.html");
         modelAndView.addObject("apartments", apartmentFinder.findAll());
         return modelAndView;
     }
+
     @GetMapping("/details/{apartmentId}")
-    public ModelAndView showCarDetails(@PathVariable Long apartmentId) {
+    ModelAndView showApartmentDetails(@PathVariable Long apartmentId) {
         ModelAndView modelAndView = new ModelAndView("apartment/details.html");
         modelAndView.addObject("apartmentNumber", apartmentFinder.findById(apartmentId).getNumber());
         modelAndView.addObject("apartment", apartmentFinder.findById(apartmentId));
         return modelAndView;
     }
+
     @GetMapping("/delete")
-    String deleteCar(@RequestParam Long id){
+    String deleteApartment(@RequestParam Long id) {
         apartmentService.delete(id);
         return "redirect:/apartment/";
     }
 
     @GetMapping("/edit")
-    ModelAndView updateCar(@RequestParam Long id) {
+    ModelAndView updateApartment(@RequestParam Long id) {
         ModelAndView modelAndView = new ModelAndView("apartment/edit.html");
         modelAndView.addObject("apartment", apartmentFinder.findById(id));
         return modelAndView;
     }
 
     @PostMapping("/edit")
-    String updateCar(@ModelAttribute ApartmentDto apartmentDto) {
+    String updateApartment(@ModelAttribute ApartmentDto apartmentDto) {
         apartmentService.createOrUpdate(apartmentDto);
         return "redirect:/apartment/";
     }

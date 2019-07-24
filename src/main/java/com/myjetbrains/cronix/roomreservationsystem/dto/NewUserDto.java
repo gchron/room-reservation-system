@@ -16,12 +16,14 @@ public class NewUserDto {
 
     private Long id;
     private String login;
+    private String password;
     private String email;
 
     public User toEntity() {
         return User.builder()
                 .id(id)
                 .login(login)
+                .password(password)
                 .emailAdress(email)
                 .build();
     }

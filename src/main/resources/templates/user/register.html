@@ -6,11 +6,11 @@
 </head>
 <body>
 
-<table>
-    <form th:action="@{/user/register}" method="post" th:object="${user}">
+<form th:action="@{/user/register}" method="post" th:object="${user}">
+    <table>
         <tr>
             <td>Login</td>
-            <td><input type="text" id="number" name="number" th:value="${user.login}"></td>
+            <td><input type="text" id="login" name="login" th:value="${user.login}"></td>
         </tr>
         <tr>
             <td>Password</td>
@@ -23,10 +23,10 @@
         <tr>
             <td></td>
             <td>
-             <button type="submit">Create account</button>
+                <button type="submit">Create account</button>
             </td>
         </tr>
-</table>
+    </table>
 </form>
 </body>
 </html>

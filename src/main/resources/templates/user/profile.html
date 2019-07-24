@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>User Data</title>
+</head>
+<body>
+<form th:action="@{/user/edit}">
+
+    <table>
+        <input type="hidden" id="id" name="id" th:value="${user.id}"/>
+        <tr>
+            <td>Login</td>
+            <td><span th:text="${user.login}">Login</span></td>
+        </tr>
+        <tr>
+            <td>Name</td>
+            <td><span th:text="${user.name}">Name</span></td>
+        </tr>
+        <tr>
+            <td>Surname</td>
+            <td><span th:text="${user.surname}">Surname</span></td>
+        </tr>
+        <tr>
+            <td>Phone Number</td>
+            <td><span th:text="${user.phoneNumber}">PhoneNumber</span></td>
+        </tr>
+        <tr>
+            <td>e-mail</td>
+            <td><span th:text="${user.emailAdress}">E-mail</span></td>
+        </tr>
+<!--        <input type="hidden" name="id" th:text="${address.id}"/>-->
+        <tr>
+            <td>Street</td>
+            <td><span th:text="${address.street}">E-mail</span></td>
+        </tr>
+        <tr>
+            <td>House Number</td>
+            <td><span th:text="${address.houseNumber}">houseNumber</span></td>
+        </tr>
+        <tr>
+            <td>Apartment Number</td>
+            <td><span th:text="${address.apartmentNumber}">apartmentNumber</span></td>
+        </tr>
+        <tr>
+            <td>Postal Code</td>
+            <td><span th:text="${address.postalCode}">postalCode</span></td>
+        <tr>
+            <td>City Code</td>
+            <td><span th:text="${address.city}">city</span></td>
+        </tr>
+        <tr>
+            <td>
+                <button type="submit">Edit</button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button th:href="@{/user/changePassword}">Change Password</button>
+            </td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

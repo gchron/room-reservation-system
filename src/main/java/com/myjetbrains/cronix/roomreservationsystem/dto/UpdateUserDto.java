@@ -15,15 +15,18 @@ import lombok.Setter;
 public class UpdateUserDto {
 
     private Long id;
+    private String login;
+    private String password;
     private String name;
     private String surname;
     private String phoneNumber;
     private String emailAdress;
 
-
     public User toEntity() {
         return User.builder()
                 .id(id)
+                .login(login)
+                .name(name)
                 .surname(surname)
                 .phoneNumber(phoneNumber)
                 .emailAdress(emailAdress)
