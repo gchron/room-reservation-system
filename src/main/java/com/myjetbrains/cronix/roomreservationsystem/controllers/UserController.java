@@ -66,9 +66,9 @@ public class UserController {
     }
 
     @PostMapping("/edit")
-    String updateUserData(@ModelAttribute UpdateUserDto updateUserDto, UserAddressAssigment userAddressAssigment) {
-        userService.update(updateUserDto);
-//        addressService.createOrUpdate(userAddressAssigment);
+    String updateUserData(@ModelAttribute UserAddressAssigment userAddressAssigment) {
+        userService.update(userAddressAssigment);
+        addressService.createOrUpdate(userAddressAssigment);
         return "redirect:/user/profile";
     }
 }

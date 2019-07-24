@@ -12,8 +12,6 @@ public class UserAddressAssigment {
     private String apartmentNumber;
     private String postalCode;
     private String city;
-    private String login;
-    private String password;
     private String name;
     private String surname;
     private String phoneNumber;

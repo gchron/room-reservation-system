@@ -1,7 +1,7 @@
 package com.myjetbrains.cronix.roomreservationsystem.service;
 
 import com.myjetbrains.cronix.roomreservationsystem.dto.NewUserDto;
-import com.myjetbrains.cronix.roomreservationsystem.dto.UpdateUserDto;
+import com.myjetbrains.cronix.roomreservationsystem.dto.UserAddressAssigment;
 import com.myjetbrains.cronix.roomreservationsystem.model.User;
 import com.myjetbrains.cronix.roomreservationsystem.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -27,12 +27,12 @@ public class UserService {
     }
 
     @Transactional
-    public void update(UpdateUserDto updateUserDto){
-        User user = userRepository.findById(updateUserDto.getId())
+    public void update(UserAddressAssigment userAddressAssigment){
+        User user = userRepository.findById(userAddressAssigment.getUserId())
                 .orElseThrow(IllegalArgumentException::new);
-        user.setName(updateUserDto.getName());
-        user.setSurname(updateUserDto.getSurname());
-        user.setPhoneNumber(updateUserDto.getPhoneNumber());
-        user.setEmailAdress(updateUserDto.getEmailAdress());
+        user.setName(userAddressAssigment.getName());
+        user.setSurname(userAddressAssigment.getSurname());
+        user.setPhoneNumber(userAddressAssigment.getPhoneNumber());
+        user.setEmailAdress(userAddressAssigment.getEmailAdress());
     }
 }
