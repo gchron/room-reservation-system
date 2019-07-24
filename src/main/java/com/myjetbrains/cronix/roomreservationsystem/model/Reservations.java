@@ -1,5 +1,6 @@
 package com.myjetbrains.cronix.roomreservationsystem.model;
 
+import com.myjetbrains.cronix.roomreservationsystem.dto.ReservationsDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -35,5 +36,15 @@ public class Reservations {
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
+
+    public ReservationsDto toDto(){
+        return ReservationsDto.builder()
+                .id(id)
+                .dateFrom(String.valueOf(dateFrom))
+                .dateTo(String.valueOf(dateTo))
+                .apartmentId(apartment.getId())
+                .userId(user.getId())
+                .build();
+    }
 
 }

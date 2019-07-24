@@ -15,9 +15,9 @@ Szczegóły pokoju <span th:text="${apartmentNumber}"/>
         <th>Powierzchnia</th>
         <th>Opis</th>
         <th>Max ilość osób</th>
-        <th>Ilość łóżek </th>
-        <th>Cena w sezonie </th>
-        <th>Cena poza sezonem </th>
+        <th>Ilość łóżek</th>
+        <th>Cena w sezonie</th>
+        <th>Cena poza sezonem</th>
     </tr>
     </thead>
     <tbody>
@@ -30,9 +30,11 @@ Szczegóły pokoju <span th:text="${apartmentNumber}"/>
         <td><span th:text="${ap.numberOfBeds}"/></td>
         <td><span th:text="${ap.priceAtSeason}"/></td>
         <td><span th:text="${ap.priceAfterSeason}"/></td>
-        <td><a th:href="@{../edit?id=} + ${ap.id}">Edytuj</a></td>
-        <td><a th:href="@{../delete?id=} + ${ap.id}">Usuń</a></td>
-        <td><a th:href="@{../book?id=} + ${ap.id}">Rezerwuj</a></td>
+        <div sec:authorize="hasRole('ADMINISTRATOR')">
+            <td><a th:href="@{../edit?id=} + ${ap.id}">Edytuj</a></td>
+            <td><a th:href="@{../delete?id=} + ${ap.id}">Usuń</a></td>
+        </div>
+        <td><a th:href="@{/reservations/book?id=} + ${ap.id}">Rezerwuj</a></td>
     </tr>
     </tbody>
 </table>

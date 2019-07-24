@@ -13,18 +13,20 @@
             <input type="submit" value="Logout" />
         </form>
     </div>
+
     <ul>
         <li><a th:href="@{/apartment/}">Apartments</a></li>
         <li><a th:href="@{/user/profile}">My Account</a></li>
     </ul>
 </div>
-    <div sec:authorize="hasRole('ADMIN')">
-        <a th:href="@{/apartment/create}">Create new Apartment</a>
+    <div sec:authorize="hasRole('ADMINISTRATOR')">
+        <a th:href="@{/apartment/create}">Create new Apartment</a><br>
+        <a th:href="@{/reservations/create}">Create new Reservation</a>
     </div>
 
     <div th:fragment="login" class="logout" sec:authorize="isAnonymous()">
         <a th:href="@{/login}">Login</a><br>
-        <a th:href="@{/user/register}">Regstier</a>
+        <a th:href="@{/user/register}">Regsiter</a>
     </div>
 </body>
 </html>

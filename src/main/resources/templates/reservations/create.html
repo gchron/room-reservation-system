@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>User Data Edition</title>
+</head>
+<body>
+
+<form th:action="@{/reservations/book}" method="post" th:object="${reservation}">
+    <table>
+        <input type="hidden" id="userId" name="userId" th:value="${user.id}"/>
+        <input type="hidden" id="apartmentId" name="apartmentId" th:value="${apartment.id}"/>
+        <tr>
+            <td>Data od</td>
+            <td><input type="date" id="dateFrom" name="dateFrom"/></td>
+        </tr>
+        <tr>
+            <td>Data do</td>
+            <td><input type="date" id="dateTo" name="dateTo"/></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <button type="submit">Save</button>
+            </td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>
