@@ -6,9 +6,10 @@
 </head>
 <body>
 
-<form th:action="@{/user/edit}" method="post" th:object="${user}">
+<form th:action="@{/user/edit}" method="post" th:object="${assigment}">
     <table>
-        <td><input type="hidden" id="id" name="id" th:value="${user.id}"/></td>
+        <input type="hidden" id="userId" name="userId" th:value="${userId}"/>
+        <input type="hidden" id="addressId" name="addressId" th:value="${addressId}"/>
         <tr>
             <td>Login</td>
             <td><span th:text="${user.login}">Login</span></td>
@@ -28,26 +29,26 @@
             <td>e-mail</td>
             <td><input type="email" id="emailAdress" name="emailAdress" th:value="${user.emailAdress}"/></td>
         </tr>
-<!--        <input type="hidden" id="addressId" name="addressId" th:text="${addressId}"/>-->
-<!--        <tr>-->
-<!--            <td>Street</td>-->
-<!--            <td><input type="text" id="street" name="street" th:value="${address.street}"/></td>-->
-<!--        </tr>-->
-<!--        <tr>-->
-<!--            <td>House Number</td>-->
-<!--            <td><input type="text" id="houseNumber" name="houseNumber"  th:value="${address.houseNumber}"/></td>-->
-<!--        </tr>-->
-<!--        <tr>-->
-<!--            <td>Apartment Number</td>-->
-<!--            <td><input type="text" id="apartmentNumber" name="apartmentNumber"  th:value="${address.apartmentNumber}"/></td>-->
-<!--        </tr>-->
-<!--        <tr>-->
-<!--            <td>Postal Code</td>-->
-<!--            <td><input type="text" id="postalCode" name="postalCode"  th:value="${address.postalCode}"/></td>-->
-<!--        <tr>-->
-<!--            <td>City</td>-->
-<!--            <td><input type="text" id="city" name="city"  th:value="${address.city}"/></td>-->
-<!--        </tr>-->
+
+        <tr>
+            <td>Street</td>
+            <td><input type="text" id="street" name="street" th:value="${address.street}"/></td>
+        </tr>
+        <tr>
+            <td>House Number</td>
+            <td><input type="text" id="houseNumber" name="houseNumber"  th:value="${address.houseNumber}"/></td>
+        </tr>
+        <tr>
+            <td>Apartment Number</td>
+            <td><input type="text" id="apartmentNumber" name="apartmentNumber"  th:value="${address.apartmentNumber}"/></td>
+        </tr>
+        <tr>
+            <td>Postal Code</td>
+            <td><input type="text" id="postalCode" name="postalCode"  th:value="${address.postalCode}"/></td>
+        <tr>
+            <td>City</td>
+            <td><input type="text" id="city" name="city"  th:value="${address.city}"/></td>
+        </tr>
         <tr>
             <td></td>
             <td>

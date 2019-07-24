@@ -56,19 +56,23 @@ public class UserController {
     ModelAndView updateUser(@RequestParam(value = "id") Long userId, Principal principal) {
         ModelAndView modelAndView = new ModelAndView("user/edit.html");
         UpdateUserDto updateUserDto = userFinder.findById(userId);
-        AddressDto userAddress = addressFinder.findUserAddress(updateUserDto);
+        AddressDto userAddress = userAddress = addressFinder.findUserAddress(updateUserDto);
+        modelAndView.addObject("addressId", userAddress.getId());
         modelAndView.addObject("userId", updateUserDto.getId());
         modelAndView.addObject("user", updateUserDto);
-        modelAndView.addObject("addressId", userAddress.getId());
         modelAndView.addObject("address", userAddress);
         modelAndView.addObject("assigment", new UserAddressAssigment());
         return modelAndView;
     }
 
     @PostMapping("/edit")
-    String updateUserData(@ModelAttribute UpdateUserDto updateUserDto, UserAddressAssigment userAddressAssigment) {
-        userService.update(updateUserDto);
-//        addressService.createOrUpdate(userAddressAssigment);
+    String updateUserData(@ModelAttribute UserAddressAssigment userAddressAssigment) {
+        userService.update(userAddressAssigment);
+        if (userAddressAssigment.getAddressId() == null) {
+            addressService.create(userAddressAssigment);
+        } else {
+            addressService.update(userAddressAssigment);
+        }
         return "redirect:/user/profile";
     }
 }
