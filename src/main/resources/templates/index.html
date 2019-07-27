@@ -6,27 +6,27 @@
 </head>
 <body>
 <div th:fragment="logout" class="logout" sec:authorize="isAuthenticated()">
-    Hello <span sec:authentication="name"></span> |   Role: <span sec:authentication="principal.authorities"></span><br>
+    Hello <span sec:authentication="name"></span> | Role: <span sec:authentication="principal.authorities"></span><br>
     Today is: <span th:text="${todayDate}"/><br>
     <div>
         <form th:action="@{/logout}" method="POST">
-            <input type="submit" value="Logout" />
+            <input type="submit" value="Logout"/>
         </form>
     </div>
-
     <ul>
         <li><a th:href="@{/apartment/}">Apartments</a></li>
         <li><a th:href="@{/user/profile}">My Account</a></li>
+        <li><a th:href="@{/user/reservations}">My Reservations</a></li>
     </ul>
 </div>
-    <div sec:authorize="hasRole('ADMINISTRATOR')">
-        <a th:href="@{/apartment/create}">Create new Apartment</a><br>
-        <a th:href="@{/reservations/create}">Create new Reservation</a>
-    </div>
+<div sec:authorize="hasRole('ADMINISTRATOR')">
+    <a th:href="@{/apartment/create}">Create new Apartment</a><br>
+    <a th:href="@{/reservations/create}">Create new Reservation</a>
+</div>
 
-    <div th:fragment="login" class="logout" sec:authorize="isAnonymous()">
-        <a th:href="@{/login}">Login</a><br>
-        <a th:href="@{/user/register}">Regsiter</a>
-    </div>
+<div th:fragment="login" class="logout" sec:authorize="isAnonymous()">
+    <a th:href="@{/login}">Login</a><br>
+    <a th:href="@{/user/register}">Register</a>
+</div>
 </body>
 </html>

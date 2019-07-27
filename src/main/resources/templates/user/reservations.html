@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Reservations</title>
+</head>
+<body>
+Nazwa użytkownika <span th:text="${user}"/><br>
+<table>
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Data przyjazdu</th>
+        <th>Data wyjazdu</th>
+        <th>Nr pokoju</th>
+        <th>Cena</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="reservation : ${reservations}">
+        <td><span th:text="${reservation.id}"/></td>
+        <td><span th:text="${reservation.dateFrom}"/></td>
+        <td><span th:text="${reservation.dateTo}"/></td>
+        <td><span th:text="${reservation.apartmentId}"/></td>
+        <td><a th:href="@{../reservations/edit?id=} + ${reservation.id}">Edytuj</a></td>
+        <td><a th:href="@{../reservations/delete?id=} + ${reservation.id}">Usuń</a></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

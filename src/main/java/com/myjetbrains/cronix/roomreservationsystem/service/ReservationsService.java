@@ -25,4 +25,8 @@ public class ReservationsService {
                 .build();
         reservationRepository.save(reservations);
     }
+
+    public void delete(Long id) {
+        reservationRepository.delete(reservationRepository.findById(id).orElseThrow(IllegalArgumentException::new));
+    }
 }

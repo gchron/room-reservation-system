@@ -25,4 +25,11 @@ public class ReservationsFinder {
                 .map(reservations -> reservations.toDto())
                 .orElseThrow(IllegalArgumentException::new);
     }
+
+    public Set<ReservationsDto> findByUserId(Long userId) {
+        return reservationRepository.findAll().stream()
+                .map(reservations -> reservations.toDto())
+                .filter(reservations -> reservations.getUserId().equals(userId))
+                .collect(Collectors.toSet());
+    }
 }

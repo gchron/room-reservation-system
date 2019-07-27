@@ -41,4 +41,10 @@ public class ReservationsController {
         reservationsService.create(reservationsDto);
         return "redirect:/";
     }
+
+    @GetMapping("/delete")
+    String delete(@RequestParam(name = "id") Long id) {
+        reservationsService.delete(id);
+        return "redirect:/";
+    }
 }
